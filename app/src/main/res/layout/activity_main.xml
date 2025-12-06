@@ -1,12 +1,375 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
-    <TextView
-        android:id="@+id/hello_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Placeholder"
-        android:textSize="24sp" />
-</FrameLayout>
+    android:orientation="vertical">
+
+    <!-- TOP BAR con titolo + ingranaggio -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:background="#202020">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Astro-Lair"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/button_settings"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Configurazione strumenti"
+            android:padding="4dp"
+            android:tint="#FFFFFF"
+            android:src="@android:drawable/ic_menu_manage" />
+    </LinearLayout>
+
+    <!-- CONTENUTO SCROLLABILE -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- SEZIONE LUNA -->
+            <LinearLayout
+                android:id="@+id/section_moon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fase lunare"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/moon_selected_datetime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data/ora: adesso"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp">
+
+                    <Button
+                        android:id="@+id/button_now"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Adesso" />
+
+                    <Button
+                        android:id="@+id/button_pick_datetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scegli data/ora"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/moon_phase_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fase: —"
+                    android:textSize="16sp"
+                    android:paddingBottom="16dp" />
+            </LinearLayout>
+
+            <!-- SEZIONE METEO / SEEING -->
+            <LinearLayout
+                android:id="@+id/section_weather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Meteo / Seeing"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingBottom="4dp" />
+
+                <Button
+                    android:id="@+id/button_refresh_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aggiorna meteo / seeing"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/seeing_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Premi il pulsante per recuperare condizioni meteo e seeing stimato."
+                    android:paddingBottom="16dp" />
+            </LinearLayout>
+
+            <!-- SEZIONE SOHO -->
+            <LinearLayout
+                android:id="@+id/section_soho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SOHO – Sole in tempo quasi reale"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Strumento" />
+
+                <Spinner
+                    android:id="@+id/soho_instrument_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/soho_instruments"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Formato" />
+
+                <Spinner
+                    android:id="@+id/soho_format_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/soho_formats"
+                    android:layout_marginBottom="8dp" />
+
+                <Button
+                    android:id="@+id/button_refresh_sun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aggiorna immagine SOHO"
+                    android:layout_marginBottom="8dp" />
+
+                <ImageView
+                    android:id="@+id/soho_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="#000000" />
+
+                <TextView
+                    android:id="@+id/soho_status_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seleziona C2/C3, GIF/JPG e premi Aggiorna."
+                    android:paddingBottom="16dp" />
+            </LinearLayout>
+
+            <!-- SEZIONE SATELLITI -->
+            <LinearLayout
+                android:id="@+id/section_satellites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Satelliti Giove / Saturno"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingBottom="4dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vista schematica lungo l'equatore del pianeta, stile TheSkyLive (non per uso scientifico)."
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp">
+
+                    <Button
+                        android:id="@+id/button_jupiter_moons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giove" />
+
+                    <Button
+                        android:id="@+id/button_saturn_moons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Saturno"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/satellites_canvas"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="#000000"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/satellites_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Premi Giove o Saturno per vedere la disposizione dei satelliti."
+                    android:paddingBottom="16dp" />
+            </LinearLayout>
+
+            <!-- SEZIONE TARGET / PLANNER -->
+            <LinearLayout
+                android:id="@+id/section_targets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Target / Session planner"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Catalogo" />
+
+                <Spinner
+                    android:id="@+id/target_catalog_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Oggetto (digita il numero, es. 31)" />
+
+                <EditText
+                    android:id="@+id/target_object_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Numero oggetto (es. 31, 42, 7000...)"
+                    android:layout_marginBottom="8dp" />
+
+                <Button
+                    android:id="@+id/target_select_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scegli"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/target_info_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nessun oggetto selezionato."
+                    android:paddingBottom="12dp" />
+
+                <Button
+                    android:id="@+id/target_stack_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mostra stack"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/target_stack_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Suggerimento stack non ancora calcolato."
+                    android:paddingBottom="16dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- BOTTOM BAR con pulsanti delle attività -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#202020"
+        android:paddingHorizontal="4dp">
+
+        <Button
+            android:id="@+id/button_menu_moon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Luna"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/button_menu_weather"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Meteo"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/button_menu_soho"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SOHO"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/button_menu_satellites"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Satelliti"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/button_menu_targets"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Target"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</LinearLayout>

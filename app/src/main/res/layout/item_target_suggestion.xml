@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/suggestion_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="M31 - Galassia di Andromeda"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/suggestion_constellation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Andromeda"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/suggestion_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="Preview oggetto"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_target_placeholder" />
+</LinearLayout>

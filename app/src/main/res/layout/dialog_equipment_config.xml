@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telescopio primario" />
+
+        <EditText
+            android:id="@+id/edit_primary_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descrizione (es. Newton 200/800)" />
+
+        <EditText
+            android:id="@+id/edit_primary_focal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Lunghezza focale (mm)" />
+
+        <EditText
+            android:id="@+id/edit_primary_ratio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Rapporto focale (es. 4.0)" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telescopio secondario (opzionale)" />
+
+        <EditText
+            android:id="@+id/edit_secondary_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descrizione" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Camera CCD / CMOS" />
+
+        <EditText
+            android:id="@+id/edit_imaging_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome camera imaging" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Camera guida" />
+
+        <EditText
+            android:id="@+id/edit_guide_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome camera guida" />
+
+    </LinearLayout>
+</ScrollView>
