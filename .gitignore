@@ -1,0 +1,11 @@
+
+# Gradle build artifacts
+/build/
+/app/build/
+
+# IDE files
+*.iml
+.idea/
+
+# Local configuration
+local.properties
